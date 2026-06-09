@@ -1,0 +1,92 @@
+<header class="atf-header-area">
+	<div class="atf-top-header style1 d-none d-md-block">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-8 col-lg-9">
+					<div class="atf-top-header-in">
+						<ul class="atf-top-header-list">
+							<li><i class="fa-light fa-phone-volume"></i><a href="tel:65489542345">+ 654 8954 2345 </a>
+							</li>
+							<li><i class="fa-light fa-envelope"></i><a href="mailto:info@mail.com">info@mail.com</a>
+							</li>
+							<li><i class="fa-light fa-location-dot"></i><a href="#">10 Street Ave,Canada</a></li>
+						</ul>
+					</div>
+				</div><!-- END COL -->
+
+				<div class="col-xl-4 col-lg-3 d-none d-lg-block">
+					<div class="atf-header-top-social justify-content-end">
+						<ul>
+							<li><a href="#"><i class="fab fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+							<li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
+							<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div><!-- END COL -->
+			</div><!-- END ROW -->
+		</div><!-- END CONTAINER -->
+	</div>
+
+	<div class="atf-site-header atf-style1 atf-sticky-header atf_bg_skew">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-xl-2 col-lg-6 col-md-5 col-sm-6 col-6 ">
+					<div class="atf-site-logo">
+						<a href="{{ url_for('home') }}"><img class="logo-black"
+								src="{{ url_for('static', filename='img/logo/logo.png') }}" alt="Logo"></a>
+						<a href="{{ url_for('home') }}"><img class="logo-white"
+								src="{{ url_for('static', filename='img/logo/logo-white.png') }}" alt="Logo"></a>
+					</div>
+				</div>
+
+				<div class="col-xl-7 d-none d-xl-block">
+					<div class="atf-main-menu d-flex justify-content-center">
+						<nav class="atf-nav atf-mobile-menu-active">
+							<ul class="atf-nav-list">
+								<li><a href="{{ url_for('home') }}">Home</a>
+								</li>
+								<li><a href="{{ url_for('about') }}">About</a></li>
+								<li class="menu-item-children"><a href="{{ url_for('services') }}">Our Services</a>
+									<ul class="sub-menu">
+										
+										<li class="menu-item-children"><a href="team.html">Our Team</a>
+											<ul class="sub-menu">
+												<li><a href="team.html">Our Team</a></li>
+												<li><a href="team-details.html">Team Details</a></li>
+											</ul>
+										</li>
+										<li><a href="{{ url_for('clients') }}">Client</a></li>
+										<li><a href="pricing.html">Pricing</a></li>										
+										<li><a href="{{ url_for('faq') }}">Faq</a></li>
+										<li><a href="{{ url_for('terms_conditions') }}">Terms Conditions</a></li>
+										<li><a href="{{ url_for('privacy') }}">Privacy Policy</a></li>
+									</ul>
+								</li>
+								
+								<li><a href="{{ url_for('contact') }}">Contact</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div><!-- END COL -->
+
+				<div class="col-xl-3 col-lg-6 col-md-7 col-sm-6 col-6">
+					<div class="atf-header-bottom-right d-flex align-items-center justify-content-end">
+						<button type="button" class="atf-searching-btn style1 d-none d-md-block">
+							<i class="fa-light fa-magnifying-glass"></i>
+						</button>
+
+						<div class="atf-menu-btn d-flex align-items-center">
+							<a class="atf-themes-btn d-none d-md-block" href="{{ url_for('contact') }}"><span>Get A Quote</span></a>
+						</div>
+						<div class="atf-main-menu-bars d-block d-xl-none">
+							<button class="atf-hamburger-toogle">
+								<i class="fa-light fa-bars"></i>
+							</button>
+						</div>
+					</div>
+				</div><!-- END COL -->
+			</div><!-- END ROW -->
+		</div><!-- END CONTAINER -->
+	</div>
+</header>

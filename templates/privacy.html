@@ -1,0 +1,48 @@
+{% extends "layouts/master.html" %}
+{% block title %}
+Privacy Policy
+{% endblock %}
+{% block content %}
+			
+			<!-- START BREADCRUMB -->
+			<section class="breadcrumb-area breadcrumb-cover-bg breadcrumb-no-overlay position-relative breadcrumb-spacing breadcrumb-bg-attach" style="background-image: url({{ url_for('static', filename='img/breadcrumb/privacy.png') }});">
+				 <div class="container">
+					<div class="row justify-content-center text-center">
+					   <div class="col-xxl-12">
+						  <div class="breadcrumb-content p-relative z-index-2">
+							<h2 class="breadcrumb-title section-title end" style="perspective: 400px;"><div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">P</div><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">r</div><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">i</div><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">v</div><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">a</div><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">c</div><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">y</div></div> <div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">P</div><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">o</div><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">l</div><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">i</div><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">c</div><div style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(20px, 0px); opacity: 0;">y</div></div></h2>
+							<div class="breadcrumb-single-content mt-10">
+								<span><a href="{{ url_for('home') }}">HOME</a></span>
+								<span><i class="arrow down"></i></span>
+								<span class="breadcrumb-sub-title">PRIVACY POLICY</span>
+							</div>
+						  </div>
+					   </div>
+					</div>
+				 </div>
+			</section>
+			<!-- END BREADCRUMB -->
+			
+			<!-- Start Inner Privacy Policy Area -->
+			<section class="privacy-policy atf-section-padding">
+				<div class="container">
+					<div class="privacy-policy-details">
+						<h3 class="title mb-20">IT Service Privacy Policy</h3>
+						<p>At TechCore Solutions, we are deeply committed to protecting the privacy and confidentiality of all personal and organizational data entrusted to us through our IT services. This Privacy Policy outlines how we collect, use, store, and safeguard information when you engage with our managed IT services, cloud solutions, cybersecurity offerings, and technology consulting programs. By using our services, you agree to the practices described in this policy. We regularly review and update this document to reflect changes in technology, legislation, and our internal data governance standards.</p>
+						
+						<p>We understand that data privacy is not just a legal obligation — it is a fundamental right. Our infrastructure is built on industry-leading security frameworks, including ISO/IEC 27001 and SOC 2 Type II compliance standards, ensuring your data is handled with the highest level of care. All information processed through our systems is subject to strict access controls, end-to-end encryption, and continuous security monitoring. We never sell, rent, or share your personal data with third parties for commercial purposes without your explicit consent.</p>
+						
+						<h3 class="title mb-20 mt-20">What Information Do We Collect?</h3>
+						
+						<p>When you interact with our IT services — whether through our client portal, help desk, managed services platform, or consultation requests — we may collect certain types of information to deliver and improve our services effectively. This includes personal identification details such as your full name, business email address, phone number, and company name. We also collect technical data such as IP addresses, device identifiers, system configuration details, network logs, and usage analytics generated during service delivery. For billing and contract management purposes, we may collect financial information including payment method details, which are always processed through secure, PCI-DSS compliant payment gateways. Additionally, in the course of providing IT support or cybersecurity assessments, we may temporarily access systems, files, or logs strictly necessary to resolve the issue at hand — all access is logged, audited, and governed by signed service agreements.</p>
+						
+						<h3 class="title mb-20 mt-20">Why Do We Use Your Information?</h3>
+						
+						<p>The information we collect is used exclusively to provide, maintain, and continuously improve the IT solutions and services we deliver to your organization. Specifically, we use your data to provision and manage cloud infrastructure, respond to technical support requests, conduct security audits and vulnerability assessments, generate performance and compliance reports, and communicate important service updates or maintenance schedules. We may also use aggregated, anonymized data to analyze service trends and enhance our technology offerings — ensuring our solutions remain aligned with evolving industry standards and client needs.</p>
+						
+						<p class="mb-0">We are committed to full transparency in how your data is used. You retain the right to access, correct, or request deletion of any personal information we hold at any time. Our Data Protection Officer (DPO) is available to address any privacy-related concerns or requests. We will never use your data for purposes beyond what is outlined in this policy without first obtaining your informed consent. If you have questions regarding this Privacy Policy or wish to exercise your data rights, please contact our compliance team at privacy@techcore.com. We are here to ensure your experience with our IT services is not only powerful and reliable — but fully secure and trustworthy.</p>
+					</div>
+				</div>
+			</section>
+{% endblock %}
+
