@@ -2325,7 +2325,7 @@ input[type="color"] {
 .atf_single_gallery .inner-content {
 	color: var(--atf-thm-white);
 	text-align: center;
-	width: 70%;
+	width: 82%;
 	opacity: 0;
 	transform: translateX(-50%) translateY(-50%);
 	position: absolute;
@@ -2335,6 +2335,7 @@ input[type="color"] {
 	z-index: 1;
 	line-height: 1.4;
 	align-items: center;
+	gap: 20px;
 }
 .atf_single_gallery:hover .inner-content{
     opacity: 1;
@@ -2362,10 +2363,13 @@ input[type="color"] {
     padding: 0;
     margin: 0;
     list-style: none;
+	display: flex;
+	flex-wrap: nowrap;
+	flex-shrink: 0;
+	gap: 8px;
 }
 .atf_single_gallery .icon li{
-    display: inline-block;
-    margin: 0 4px;
+    margin: 0;
 }
 .atf_single_gallery .icon li a {
 	color: var(--atf-thm-white);
@@ -2458,14 +2462,17 @@ input[type="color"] {
 	margin: 0 12px;
 	background: var(--atf-grey-1);
 	border-radius: 20px;
+	overflow: hidden;
 }
 .atf-single-team .pic img {
 	width: 100%;
-	border-radius: 20px;
+	border-radius: 15px 15px 0 0;
+	display: block;
 }
 .atf-single-team .pic {
 	position:relative;
 	overflow:hidden;
+	border-radius: 15px 15px 0 0;
 }
 .atf-single-team .team-title{
     display: block;
@@ -4556,19 +4563,19 @@ END TERM PRIVACY DETAILS DESIGN
 .atf-footer-widget-info {
   gap: 25px;
 }
-.atf-footer-widget-info a {
+.atf-footer-widget-info a,
+.atf-footer-widget-info-location p,
+.atf-single-footer .atf-footer-widget-abn {
   position: relative;
   font-weight: 500;
   font-size: 16px;
   color: var(--atf-thm-white);
   display: block;
+  margin: 0;
+  line-height: 1.7;
 }
 .atf-footer-widget-info-location p {
 	color: var(--atf-thm-white);
-	margin: 0;
-	font-size: 16px;
-	font-weight: 500;
-	line-height: 1.7;
 }
 .atf-footer-widget-info span {
 	background: var(--atf-thm-white);

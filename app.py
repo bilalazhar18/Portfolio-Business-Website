@@ -23,9 +23,9 @@ def about():
 def services():
     return render_template("services.html")
 
-@app.route("/clients")
-def clients():
-    return render_template("clients.html")
+@app.route("/pricing")
+def pricing():
+    return render_template("pricing.html")
 
 @app.route("/privacy")
 def privacy():
@@ -67,7 +67,6 @@ def get_quote_form_data():
         "name": request.form.get("name", "").strip(),
         "email": request.form.get("email", "").strip(),
         "phone": request.form.get("phone", "").strip(),
-        "service": request.form.get("service", "").strip(),
         "message": request.form.get("message", "").strip(),
     }
 
@@ -112,7 +111,6 @@ def build_quote_email(form_data, sender_email):
         f"Name: {form_data['name']}\n"
         f"Email: {form_data['email']}\n"
         f"Phone: {form_data['phone']}\n"
-        f"Service: {form_data['service'] or 'Not selected'}\n\n"
         f"Message:\n{form_data['message']}\n"
     )
     return email_message

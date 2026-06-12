@@ -28,15 +28,6 @@ $(function() {
 
 	function clearContactForm() {
 		form[0].reset();
-
-		var serviceSelect = $(form).find('select[name="service"]');
-		serviceSelect.prop('selectedIndex', 0).trigger('change');
-
-		var niceSelect = serviceSelect.next('.nice-select');
-		var firstOption = niceSelect.find('.option').first();
-		niceSelect.find('.current').text(firstOption.text());
-		niceSelect.find('.option').removeClass('selected focus');
-		firstOption.addClass('selected focus');
 	}
 
 	// Set up an event listener for the contact form.
