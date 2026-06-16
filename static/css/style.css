@@ -4225,6 +4225,9 @@ END TERM PRIVACY DETAILS DESIGN
 	display: inline-block;
 	border-radius: 20px;
 	background: var(--atf-grey-7);
+	width: 100%;
+	height: 92px;
+	object-fit: contain;
 }
 /*
 * ----------------------------------------------------------------------------------------
