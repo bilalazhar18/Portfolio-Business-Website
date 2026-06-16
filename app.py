@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from flask import Flask, redirect, render_template, request, url_for
 
 
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 app = Flask(__name__)
 
@@ -74,8 +74,14 @@ def send_quote_email(form_data):
     smtp_config = get_smtp_config()
     email_message = build_quote_email(form_data, smtp_config["username"])
 
-    with smtplib.SMTP(smtp_config["host"], smtp_config["port"]) as server:
-        server.starttls()
+    if smtp_config["use_ssl"]:
+        server = smtplib.SMTP_SSL(smtp_config["host"], smtp_config["port"], timeout=20)
+    else:
+        server = smtplib.SMTP(smtp_config["host"], smtp_config["port"], timeout=20)
+
+    with server:
+        if smtp_config["use_starttls"]:
+            server.starttls()
         server.login(smtp_config["username"], smtp_config["password"])
         server.send_message(email_message)
 
@@ -94,11 +100,20 @@ def get_smtp_config():
         "username": os.getenv("SMTP_USERNAME") or os.getenv("EMAIL_ADDRESS"),
         "password": os.getenv("SMTP_PASSWORD") or os.getenv("EMAIL_PASSWORD"),
     }
+    config["use_ssl"] = get_env_bool("SMTP_USE_SSL", config["port"] == 465)
+    config["use_starttls"] = get_env_bool("SMTP_USE_STARTTLS", not config["use_ssl"])
 
     if not all([config["host"], config["username"], config["password"]]):
         raise RuntimeError("Email is not configured yet. Please set SMTP settings and restart the app.")
 
     return config
+
+
+def get_env_bool(name, default=False):
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return value.strip().lower() in {"1", "true", "yes", "on"}
 
 
 def build_quote_email(form_data, sender_email):
