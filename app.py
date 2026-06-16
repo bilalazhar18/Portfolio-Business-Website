@@ -105,7 +105,7 @@ def build_quote_email(form_data, sender_email):
     email_message = EmailMessage()
     email_message["Subject"] = f"New Quote Request from {form_data['name']}"
     email_message["From"] = os.getenv("SMTP_FROM_EMAIL", sender_email)
-    email_message["To"] = os.getenv("QUOTE_RECIPIENT", "bilalazhar125@gmail.com")
+    email_message["To"] = os.getenv("QUOTE_RECIPIENT", "info@sparknest.com.au")
     email_message["Reply-To"] = form_data["email"]
     email_message.set_content(
         f"Name: {form_data['name']}\n"
