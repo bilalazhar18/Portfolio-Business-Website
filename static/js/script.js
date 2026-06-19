@@ -1,47 +1,6 @@
-/*
-	Author       :	Themesfamily
-	Template Name:	TechCore – IT Solutions & Technology Multipage HTML Template
-	Version      :	1.0.0
-	
-/***************************************************
-==================== JS ======================
-****************************************************
-01. PRELOADER JS
-02. ATTACHMENT IMAGE JS
-03.	STICKY HEADER JS
-04. MOBILE MENU 
-05. SCROLL MENU
-06. BACK TO TOP
-07. Star Home Slider JS
-08. Star Gallary JS
-09. Star Service JS
-10. Star Team JS
-11. Star Client JS
-12. WOW SCROLL
-13. START PARTNER LOGO JS
-	--Star Counter
-14. LIGHTCASE JS
-15. NICE SELECT JS
-16. GSAP JS
-17. MAILCHAMP JS
-18. MARQUEE JS
-
-****************************************************/
-
 (function ($) {
     "use strict";
 
-    /*--------------------------------------------------------------
-	01.	PRELOADER JS
-	--------------------------------------------------------------*/
-	$(window).on('load', function () {
-		// Animate loader off screen
-		$(".atf-preloader").addClass('loaded');
-		$(".atf-preloader").delay(600).fadeOut();
-	});
-    /*--------------------------------------------------------------
-	PRELOADER JS
-	--------------------------------------------------------------*/
 	/*--------------------------------------------------------------
 	Header Search js
 	--------------------------------------------------------------*/
@@ -53,7 +12,7 @@
 		$('.atf-searching-area').removeClass('active');
 	  });
 	/*--------------------------------------------------------------
-	02.	ATTACHMENT IMAGE JS
+	01.	ATTACHMENT IMAGE JS
 	--------------------------------------------------------------*/
     var bg = $(".atf_attach_bg");
     bg.css("background-image", function () {
@@ -61,7 +20,7 @@
         return attach;
     });
     /*--------------------------------------------------------------
-	03.	STICKY HEADER JS
+	02.	STICKY HEADER JS
 	--------------------------------------------------------------*/
     $(window).on("scroll", function () {
         var scroll = $(window).scrollTop();
@@ -72,7 +31,7 @@
 			}
     });
     /*--------------------------------------------------------------
-	04.	MOBILE MENU 
+	03.	MOBILE MENU 
 	--------------------------------------------------------------*/
     var atfHamburger = $(".atf-mobile-menu-active > ul").clone();
     var atfHamburgerMenu = $(".atf-hamburger-menu nav");
