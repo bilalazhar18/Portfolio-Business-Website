@@ -1,93 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-	
+
 
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
 <head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>{% block title %}sparknest{% endblock %}</title>
-		<!-- Favicon -->
-		<link rel="shortcut icon" href="{{ url_for('static', filename='img/logo/favicon.png') }}" type="image/x-icon">
-        
-		<!-- Latest Bootstrap min CSS -->
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/plugin.min.css') }}">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/theme-spacing.min.css') }}">
-		<link rel="stylesheet" href="{{ url_for('static', filename='fonts/all.min.css') }}">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
-	</head>
+	<title>{% block title %}sparknest{% endblock %}</title>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/logo/favicon.png') }}" type="image/x-icon">
 
-	<body>
+	<!-- Latest Bootstrap min CSS -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/plugin.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/theme-spacing.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/all.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
 
-		<div class="page-wrapper">
-		
-			<!-- CURSOR BODY START -->
-			<div class="cursor_body">
-				<div class="cursor-in"></div>
-				<div class="cursor-out"></div>
-			</div>		  
-			<!-- CURSOR BODY END -->
-			
-			<!-- Back to Top Start -->
-			<a href="#" id="back_to_top" class="active"><i class="fa fa-long-arrow-up"></i></a>
-			<!-- Back to Top End -->
-			
-			<!-- Start Hamburger area  -->
-			<div class="atf-hamburger">
-				<div class="atf-hamburger-wrapper">
-					<div class="atf-hamburger-header d-flex justify-content-between align-items-center mb-50">
-						<div class="atf-hamburger-logo">
-						   <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo/logo.png') }}" alt=""></a>
-						</div>
-						<div class="atf-hamburger-close">
-						   <button class="atf-hamburger-close-toggle"><i class="fa fa-times"></i></button>
-						</div>
+<body>
+
+	<div class="page-wrapper">
+
+		<!-- CURSOR BODY START -->
+		<div class="cursor_body">
+			<div class="cursor-in"></div>
+			<div class="cursor-out"></div>
+		</div>
+		<!-- CURSOR BODY END -->
+
+		<!-- Back to Top Start -->
+		<a href="#" id="back_to_top" class="active"><i class="fa fa-long-arrow-up"></i></a>
+		<!-- Back to Top End -->
+
+		<!-- Start Hamburger area  -->
+		<div class="atf-hamburger">
+			<div class="atf-hamburger-wrapper">
+				<div class="atf-hamburger-header d-flex justify-content-between align-items-center mb-50">
+					<div class="atf-hamburger-logo">
+						<a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo/logo.png') }}"
+								alt=""></a>
 					</div>
-				 
-					<div class="atf-hamburger-menu d-block d-xl-none mb-50">
-						<nav></nav>
-					</div>
-				 
-
-					<div class="atf-hamburger-info mb-50">
-						<h3 class="atf-hamburger-sm-title">Contact Info</h3>
-						<span><a href="#"><i class="fas fa-map-marker-alt me-2"></i> 123 Pitt Street, Sydney NSW 2000</a></span>
-					</div>
-				 
-					<div class="atf-hamburger-social mb-50">
-						<h3 class="atf-hamburger-sm-title">Follow Me</h3>
-						<a href="https://www.facebook.com/profile.php?id=61591026779811" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-						<a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-						<a href="#"><i class="fab fa-linkedin-in"></i></a>
-						<a href="https://www.instagram.com/the.spark.nest/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+					<div class="atf-hamburger-close">
+						<button class="atf-hamburger-close-toggle"><i class="fa fa-times"></i></button>
 					</div>
 				</div>
+
+				<div class="atf-hamburger-menu d-block d-xl-none mb-50">
+					<nav></nav>
+				</div>
+
+
+				<div class="atf-hamburger-info mb-50">
+					<h3 class="atf-hamburger-sm-title">Contact Info</h3>
+					<span><a href="#"><i class="fas fa-map-marker-alt me-2"></i> 123 Pitt Street, Sydney NSW
+							2000</a></span>
+				</div>
+
+				<div class="atf-hamburger-social mb-50">
+					<h3 class="atf-hamburger-sm-title">Follow Me</h3>
+					<a href="https://www.facebook.com/profile.php?id=61591026779811" target="_blank"
+						rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+					<a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+					<a href="#"><i class="fab fa-linkedin-in"></i></a>
+					<a href="https://www.instagram.com/the.spark.nest/" target="_blank" rel="noopener noreferrer"><i
+							class="fab fa-instagram"></i></a>
+				</div>
 			</div>
+		</div>
 
-			<div class="atf-hamburger-overlay"></div>
-			<!-- End Hamburger area  -->
+		<div class="atf-hamburger-overlay"></div>
+		<!-- End Hamburger area  -->
 
-			 {% include 'partials/header.html' %}
-		
+		{% include 'partials/header.html' %}
+
 		<main>
-            {% block content %}
-            {% endblock %}
-			
+			{% block content %}
+			{% endblock %}
+
 		</main>
-		
-        {% include 'partials/footer.html' %}
-			
+
+		{% include 'partials/footer.html' %}
+
 	</div>
 
-        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/plugin.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/gsap.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/form-contact.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-		
-	</body>
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/plugin.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/gsap.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/form-contact.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+</body>
+
 </html>
