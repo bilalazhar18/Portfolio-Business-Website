@@ -14,7 +14,7 @@ $(function() {
 	function showToast(message, type) {
 		var isSuccess = type === 'success';
 
-		$(formMessages).text('');
+		$(formMessages).removeClass('success error').addClass(type).text('');
 		contactToast.removeClass('text-bg-success text-bg-danger');
 		contactToast.addClass(isSuccess ? 'text-bg-success' : 'text-bg-danger');
 		toastBody.text(message);
@@ -22,12 +22,18 @@ $(function() {
 		if (window.bootstrap && contactToast.length) {
 			bootstrap.Toast.getOrCreateInstance(contactToast[0], { delay: 4000 }).show();
 		} else {
-			$(formMessages).removeClass('success error').addClass(type).text(message);
+			$(formMessages).text(message);
 		}
 	}
 
 	function clearContactForm() {
 		form[0].reset();
+	}
+
+	function resetTurnstile() {
+		if (window.turnstile && form.find('.cf-turnstile').length) {
+			window.turnstile.reset();
+		}
 	}
 
 	// Set up an event listener for the contact form.
@@ -47,10 +53,12 @@ $(function() {
 		.done(function(response) {
 			showToast(response, 'success');
 			clearContactForm();
+			resetTurnstile();
 		})
 		.fail(function(data) {
 			var message = data.responseText || 'Could not send your request right now.';
 			$(formMessages).removeClass('success').addClass('error').text(message);
+			resetTurnstile();
 		});
 	});
 

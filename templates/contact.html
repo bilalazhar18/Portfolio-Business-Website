@@ -17,6 +17,19 @@ Contact Us
 		display: block;
 	}
 
+	.contact-turnstile-message {
+		font-weight: 700;
+		margin: 0 0 16px;
+	}
+
+	.contact-turnstile-message.error {
+		color: #d93025;
+	}
+
+	.contact-turnstile-message.success {
+		color: #137333;
+	}
+
 	.contact-breadcrumb::before {
 		display: none;
 	}
@@ -256,21 +269,25 @@ Contact Us
 							</div>
 						</div>
 						<div class="col-lg-12 col-xl-12">
-							<div class="atf-contact-btn text-start">
-								<button type="submit" class="atf-themes-btn"> <span>Request Quote</span></button>
+					<div class="atf-contact-btn text-start">
+						<!-- Cloudflare Turnstile widget -->
+						{% if turnstile_enabled %}
+						<div class="cf-turnstile mb-3" data-sitekey="{{ turnstile_site_key }}"></div>
+						{% endif %}
+						<p class="form-message contact-turnstile-message text-start{% if form_error %} error{% elif form_success %} success{% endif %}">
+							{% if form_success %}
+							Your quote request has been sent successfully.
+							{% elif form_error %}
+							{{ form_error }}
+							{% endif %}
+						</p>
+						<button type="submit" class="atf-themes-btn"> <span>Request Quote</span></button>
 							</div>
 							<p class="text-center mt-3 mb-0" style="color: #0a165e;">We won&rsquo;t share your
 								information with anyone.</p>
 						</div>
 					</div>
 				</form>
-				<p class="form-message text-start">
-					{% if form_success %}
-					Your quote request has been sent successfully.
-					{% elif form_error %}
-					{{ form_error }}
-					{% endif %}
-				</p>
 				<div class="toast-container position-fixed top-0 end-0 p-3">
 					<div id="contactToast" class="toast align-items-center border-0" role="alert" aria-live="assertive"
 						aria-atomic="true">

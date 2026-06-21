@@ -1,5 +1,8 @@
+import json
 import os
 import smtplib
+import urllib.parse
+import urllib.request
 from email.message import EmailMessage
 
 from dotenv import load_dotenv
@@ -41,17 +44,28 @@ def terms_conditions():
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
+    turnstile_enabled = get_env_bool("TURNSTILE_ENABLED", True)
+    turnstile_site_key = os.getenv("TURNSTILE_SITE_KEY", "") if turnstile_enabled else ""
     if request.method == "POST":
         form_data = get_quote_form_data()
 
         if not all([form_data["name"], form_data["email"], form_data["phone"], form_data["message"]]):
-            return contact_error("Please fill in all required fields.")
+            return contact_error("Please fill in all required fields.",
+                                 turnstile_enabled=turnstile_enabled, turnstile_site_key=turnstile_site_key)
+
+        # Verify Cloudflare Turnstile token (only when enabled)
+        if turnstile_enabled:
+            turnstile_token = request.form.get("cf-turnstile-response", "")
+            if not verify_turnstile(turnstile_token):
+                return contact_error("Security check failed. Please try again.",
+                                     turnstile_enabled=turnstile_enabled, turnstile_site_key=turnstile_site_key)
 
         try:
             send_quote_email(form_data)
         except Exception as exc:
             app.logger.exception("Could not send quote request email")
-            return contact_error(f"Could not send your request right now. Error: {exc}", 500)
+            return contact_error(f"Could not send your request right now. Error: {exc}", 500,
+                                 turnstile_enabled=turnstile_enabled, turnstile_site_key=turnstile_site_key)
 
         if is_ajax_request():
             return "Your quote request has been sent successfully."
@@ -60,6 +74,8 @@ def contact():
     return render_template(
         "contact.html",
         form_success=request.args.get("sent") == "1",
+        turnstile_enabled=turnstile_enabled,
+        turnstile_site_key=turnstile_site_key,
     )
 
 def get_quote_form_data():
@@ -85,13 +101,52 @@ def send_quote_email(form_data):
         server.login(smtp_config["username"], smtp_config["password"])
         server.send_message(email_message)
 
-def contact_error(message, status_code=400):
+def contact_error(message, status_code=400, turnstile_enabled=None, turnstile_site_key=""):
+    if turnstile_enabled is None:
+        turnstile_enabled = get_env_bool("TURNSTILE_ENABLED", True)
+    if not turnstile_site_key and turnstile_enabled:
+        turnstile_site_key = os.getenv("TURNSTILE_SITE_KEY", "")
     if is_ajax_request():
         return message, status_code
-    return render_template("contact.html", form_error=message), status_code
+    return render_template(
+        "contact.html",
+        form_error=message,
+        turnstile_enabled=turnstile_enabled,
+        turnstile_site_key=turnstile_site_key,
+    ), status_code
 
 def is_ajax_request():
     return request.headers.get("X-Requested-With") == "XMLHttpRequest"
+
+def verify_turnstile(token):
+    """Verify a Cloudflare Turnstile token with the siteverify API."""
+    secret = os.getenv("TURNSTILE_SECRET_KEY", "")
+    if not secret:
+        app.logger.error("Turnstile verification failed: TURNSTILE_SECRET_KEY is not configured")
+        return False
+    if not token:
+        app.logger.error("Turnstile verification failed: missing cf-turnstile-response token")
+        return False
+    try:
+        data = urllib.parse.urlencode({
+            "secret": secret,
+            "response": token,
+            "remoteip": request.remote_addr or "",
+        }).encode()
+        req = urllib.request.Request(
+            "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+            data=data,
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            result = json.loads(resp.read().decode())
+        if not result.get("success", False):
+            app.logger.error("Turnstile verification failed: %s", result.get("error-codes", []))
+            return False
+        return True
+    except Exception:
+        app.logger.exception("Turnstile verification request failed")
+        return False
 
 def get_smtp_config():
     config = {
